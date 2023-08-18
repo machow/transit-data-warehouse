@@ -1,3 +1,7 @@
+# quarto specific
+_book
+cover.webp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Transit Data Warehousing"
+  page-footer:
+    left: |
+      Transit Data Warehousing was written by A, B, C. Let's change the name to something better.
+  cover-image: cover.jpg
+  favicon: cover.jpg
+  site-url: https://machow.github.io/transit-data-warehouse
+  repo-url: https://github.com/machow/transit-data-warehouse
+  repo-branch: main
+  repo-actions: [edit, issue]
+  chapters:
+    - index.qmd
+    - intro.qmd
+
+#bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+  epub:
+    cover-image: cover.png
+
+
+

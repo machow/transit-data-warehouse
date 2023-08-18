@@ -1,0 +1,72 @@
+# Goals {.unnumbered}
+
+## Background 
+
+Why transit data?:
+
+* Transit data is **easy to obtain**.
+* Transit data is **relevant** to anyone taking buses, trains, or `<other things?>`.
+* Transit data is **analyzed in tons of ways**, many which require careful data modelling. However, the most comprehensive guide to data modelling (The Data Warehouse Toolkit) does not use concrete data.
+
+This book aims to..:
+
+* Help people get started analyzing transit data
+* Teach the data modelling techniques needed to support a wide breadth of data work:
+  - e.g. Integrate with BI, dashboarding tools.
+  - e.g. Make it easy for analysts to interact with the data.
+  - e.g. Open up advanced analyses, such as tracking historical data.
+* Provide hands-on examples of data modelling techniques, from start to finish.
+
+Who is this book for?
+
+* SQL, python, and R folks interested in GTFS data. Or,
+* Looking to build their data analysis skills. And,
+* Building those skills actually involves analytic engineering strategies.
+
+We should plan for examples to be in SQL (duckdb?), but can likely provide translations in python (e.g. polars or pandas; [gtfs-kit crowd](https://github.com/mrcagney/gtfs_kit)) and R (dplyr; [tidytransit crowd](https://github.com/r-transit/tidytransit)).
+
+## Transit data
+
+### Background 
+
+General Transit Feed Specification (GTFS) data powers the reporting of schedules for transit in most major metropolitan areas. It is often openly available, and many tools exist for analyzing it (e.g. see [this page of gtfs resources](https://gtfs.org/resources/gtfs/)).
+
+As an open standard, the design of GTFS is balances practicality (you should be able to produce it by hand) and rigor (a program should be able to unambiguously parse it).
+
+In practice, most GTFS feeds are 9 to 12 CSV files.
+
+![gtfs schema (from https://github.com/remix/partridge)](diagrams/dependency-graph.png)
+
+### Analysis
+
+As with most datasets, GTFS data often needs several processing steps prior to analysis:
+
+* **Denormalizing**. A 9 to 12 table hierarchy is too much. It's much easier to work with fewer tables, with flatter relationships.
+* **Tidying**. Tables like `calendar` have columns for each day of the week. While this makes it easier to enter and update GTFS data, this data is easier to work with after reshaping.
+* **Snapshotting / handling multiple sources**. When analyzing data across multiple feeds, or the same feed on multiple occasions, special handling is needed.
+
+(TODO: should maybe write points above to focus more on facts and dimensions? Or not?)
+
+## Book content strategy
+
+Find an order for content that...
+
+* Centers each chapter on a realistic and interesting analytic output.
+* Orders the teaching of concepts, so that students start doing powerful things quickly
+  * See [Dave Robinson: "you have permission not to be boring"](http://varianceexplained.org/r/teach-tidyverse/)
+  * See this [summary of 10 Steps to Complex Learning](http://web.mit.edu/xtalks/TenStepsToComplexLearning-Kirschner-VanMerrienboer.pdf) for a framework on instructional design.
+* Target the simplest, nicest way to run / practice things.
+  - E.g. mention, but not use dbt (until the very end)
+  - E.g. highlight need to test assumptions, and show dbt test approach at very end.
+* Explicitly sequence concepts from The Data Warehouse Toolkit
+
+
+A nice strategy for outlining might be:
+
+1. Identify holistic tasks performed on GTFS data.
+  - E.g. take a screenshot of a realistic plot, or dashboard component.
+2. Decompose into strategies and procedures
+  - E.g. referencing The Data Warehouse Toolkit.
+3. Figure out chapter sequencing.
+  - E.g. reduce time to wow
+  - E.g. least effort, largest pay-off

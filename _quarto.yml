@@ -14,6 +14,8 @@ book:
   repo-actions: [edit, issue]
   chapters:
     - index.qmd
+    - goals.qmd
+    - outline.qmd
     - intro.qmd
 
 #bibliography: references.bib
@@ -21,10 +23,10 @@ book:
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
-  epub:
-    cover-image: cover.png
+  # pdf:
+  #   documentclass: scrreprt
+  # epub:
+  #   cover-image: cover.png
 
 
 
